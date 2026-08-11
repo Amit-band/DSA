@@ -1,3 +1,4 @@
+# Updated Java DSA README
 ## Java DSA for Beginners
 A beginner-friendly repository dedicated to learning, implementing, and mastering Data Structures and Algorithms (DSA) from scratch using Java. This project provides clean, highly readable, and heavily commented implementations of fundamental concepts to help you build a bulletproof computer science foundation.
 ------------------------------
@@ -5,9 +6,7 @@ A beginner-friendly repository dedicated to learning, implementing, and masterin
 The repository is organized into distinct, self-contained directories. Each folder focuses on a single data structure, containing the source implementation along with a minimal local explanation.
 
 ├── LinkedList/         # Singly Linked List operations (Insert, Delete, Search)
-
-├── DoublyLinkedList/   # Doubly Linked List with bi-directional traversal(Insert, Delete)
-
+├── DoublyLinkedList/   # Doubly Linked List with bi-directional traversal (Insert, Delete)
 └── README.md           # This master documentation file
 
 ------------------------------
@@ -24,18 +23,18 @@ The repository is organized into distinct, self-contained directories. Each fold
 | Component | Specification |
 |---|---|
 | Language | Java (JDK 8 or higher recommended) |
-| IDE Compatibility | IntelliJ IDEA, Eclipse(Recommended), VS Code, or Command Line |
+| IDE Compatibility | IntelliJ IDEA, Eclipse (Recommended), VS Code, or Command Line |
 | Testing Architecture | Native execution via standard logging |
 
 ------------------------------
 ## 🚀 Getting Started
 Follow these steps to download the source files and run the implementations locally on your computer.
 ## Prerequisites
-Ensure you have the Java Development Kit (JDK) installed on your machine. You can verify your system configuration by executing the following in your terminal: [1] 
+Ensure you have the Java Development Kit (JDK) installed on your machine. You can verify your system configuration by executing the following in your terminal:
 
 java -version
 
-## Installation
+## Installation & Execution
 
    1. Clone the repository:
    
@@ -48,15 +47,13 @@ java -version
    3. Open in your favorite IDE:
    Import the root directory as an existing project inside IntelliJ IDEA, Eclipse, or your preferred development studio.
 
-   ##Follow these in any IDE you like:
-   
-   cd DSA
-   
-   cd LinkedList or any folder
-   
-   javac ProgramDriver.java
-   
-   #java ProgramDriver
+## Running via Command Line
+Follow these steps to compile and execute manually in any terminal setup:
+
+cd DSA
+cd LinkedList # Or navigate to any other data structure folder
+javac ProgramDriver.java
+java ProgramDriver
 
 ------------------------------
 ## 💡 Usage Example
@@ -68,12 +65,12 @@ public class Main {
         LinkedList ll = new LinkedList();
 
         // Sequentially insert elements
-        list.add(10);
-        list.add(20);
-        list.add(30);
+        ll.add(10);
+        ll.add(20);
+        ll.add(30);
 
         System.out.println("Current List Structure:");
-        list.print(); 
+        ll.print(); 
         // Expected Console Output: 10 -> 20 -> 30 -> null
     }
 }
@@ -85,7 +82,7 @@ public class Main {
 * Complete fundamental tracking structures (Stack, Queue)
 * Add advanced hierarchical structures (BinarySearchTree, AVLTree)
 * Implement foundational graphs and traversal models (BFS, DFS)
-* Incorporate interactive Time and Space Complexity (Big-O) cheat sheets [2, 3, 4, 5] 
+* Incorporate interactive Time and Space Complexity (Big-O) cheat sheets
 
 ------------------------------
 ## 🤝 Contributing
@@ -95,7 +92,7 @@ Contributions are highly valued! If you want to make explanations clearer, fix a
    2. Create your Feature Branch (git checkout -b feature/AmazingDataStructure)
    3. Commit your Changes (git commit -m 'Add BinarySearchTree implementation')
    4. Push to the Branch (git push origin feature/AmazingDataStructure)
-   5. Open a Pull Request [6, 7] 
+   5. Open a Pull Request
 
 ------------------------------
 ## 📄 License
@@ -104,21 +101,16 @@ Distributed under the MIT License. See LICENSE for more information.
 ## 📬 Contact & Support
 
 * Project Maintainer: Your Name – bandamit687@gmail.com
-* Project Link: https://github.com/yourusername/java-DSA
+* Project Link: https://github.com/Amit-band/DSA
 
 ------------------------------
-## 📚 Resources
+## 📚 Resources & References
 
-[1] [https://pwskills.com](https://pwskills.com/blog/java/algorithms-in-java-list-programs-interview-questions)
+* Java Algorithms & Interview Preparation: PW Skills Technical Blog
+* Pointer Manipulation Slide Deck: SlideShare Linked List Guide
+* Visual Roadmap Overviews: Instagram Educational Insight
+* Graph Traversal Walkthroughs: Great Learning Graph Theory on YouTube
+* Comprehensive DSA Roadmap: AlgoZenith Study Guide
+* Problem-Solving Repositories: LeetCode Reference Workspace on GitHub
 
-[2] [https://www.slideshare.net](https://www.slideshare.net/slideshow/data-structures-with-c-linked-list/113151810)
 
-[3] [https://www.instagram.com](https://www.instagram.com/p/DawdQ77GNYL/)
-
-[4] [https://www.youtube.com](https://www.youtube.com/watch?v=zdAQ5iwdf2Q)
-
-[5] [https://algozenith-viit.vercel.app](https://algozenith-viit.vercel.app/articles/a-comprehensive-guide-to-mastering-dsa)
-
-[6] [https://github.com](https://github.com/sayyedrabeeh/leetcode-questions-and-answers-)
-
-[7] [https://github.com](https://github.com/sayyedrabeeh/leetcode-questions-and-answers-)
