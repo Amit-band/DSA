@@ -98,7 +98,7 @@ Contributions are highly valued! If you want to make explanations clearer, fix a
    5. Open a Pull Request [6, 7] 
 
 ------------------------------
-## 📄 License
+## 📄 
 Distributed under the MIT License. See LICENSE for more information.
 ------------------------------
 ## 📬 Contact & Support
@@ -106,11 +106,19 @@ Distributed under the MIT License. See LICENSE for more information.
 * Project Maintainer: Your Name – bandamit687@gmail.com
 * Project Link: https://github.com/yourusername/java-DSA
 
+------------------------------
+## 📚 Resources
 
 [1] [https://pwskills.com](https://pwskills.com/blog/java/algorithms-in-java-list-programs-interview-questions)
+
 [2] [https://www.slideshare.net](https://www.slideshare.net/slideshow/data-structures-with-c-linked-list/113151810)
+
 [3] [https://www.instagram.com](https://www.instagram.com/p/DawdQ77GNYL/)
+
 [4] [https://www.youtube.com](https://www.youtube.com/watch?v=zdAQ5iwdf2Q)
+
 [5] [https://algozenith-viit.vercel.app](https://algozenith-viit.vercel.app/articles/a-comprehensive-guide-to-mastering-dsa)
+
 [6] [https://github.com](https://github.com/sayyedrabeeh/leetcode-questions-and-answers-)
+
 [7] [https://github.com](https://github.com/sayyedrabeeh/leetcode-questions-and-answers-)
