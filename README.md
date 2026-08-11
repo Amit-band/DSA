@@ -37,14 +37,20 @@ java -version
 
    1. Clone the repository:
    
-   git clone https://github.com/yourusername/java-dsa-beginners.git
+   git clone https://github.com/Amit-band/DSA.git
    
    2. Navigate into the project directory:
    
-   cd java-DSA
+   cd DSA
    
    3. Open in your favorite IDE:
    Import the root directory as an existing project inside IntelliJ IDEA, Eclipse, or your preferred development studio.
+
+   #Follow these in any IDE you like:
+   ##cd DSA
+   ##cd LinkedList or any folder
+   ##javac ProgramDriver.java
+   ##java ProgramDriver
 
 ------------------------------
 ## 💡 Usage Example
