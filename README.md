@@ -98,7 +98,7 @@ Contributions are highly valued! If you want to make explanations clearer, fix a
    5. Open a Pull Request [6, 7] 
 
 ------------------------------
-## 📄 
+## 📄 License
 Distributed under the MIT License. See LICENSE for more information.
 ------------------------------
 ## 📬 Contact & Support
