@@ -5,7 +5,9 @@ A beginner-friendly repository dedicated to learning, implementing, and masterin
 The repository is organized into distinct, self-contained directories. Each folder focuses on a single data structure, containing the source implementation along with a minimal local explanation.
 
 ├── LinkedList/         # Singly Linked List operations (Insert, Delete, Search)
+
 ├── DoublyLinkedList/   # Doubly Linked List with bi-directional traversal(Insert, Delete)
+
 └── README.md           # This master documentation file
 
 ------------------------------
@@ -46,11 +48,15 @@ java -version
    3. Open in your favorite IDE:
    Import the root directory as an existing project inside IntelliJ IDEA, Eclipse, or your preferred development studio.
 
-   #Follow these in any IDE you like:
-   ##cd DSA
-   ##cd LinkedList or any folder
-   ##javac ProgramDriver.java
-   ##java ProgramDriver
+   ##Follow these in any IDE you like:
+   
+   cd DSA
+   
+   cd LinkedList or any folder
+   
+   javac ProgramDriver.java
+   
+   #java ProgramDriver
 
 ------------------------------
 ## 💡 Usage Example
