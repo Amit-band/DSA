@@ -6,7 +6,9 @@ A beginner-friendly repository dedicated to learning, implementing, and masterin
 The repository is organized into distinct, self-contained directories. Each folder focuses on a single data structure, containing the source implementation along with a minimal local explanation.
 
 ├── LinkedList/         # Singly Linked List operations (Insert, Delete, Search)
+
 ├── DoublyLinkedList/   # Doubly Linked List with bi-directional traversal (Insert, Delete)
+
 └── README.md           # This master documentation file
 
 ------------------------------
@@ -51,8 +53,11 @@ java -version
 Follow these steps to compile and execute manually in any terminal setup:
 
 cd DSA
+
 cd LinkedList # Or navigate to any other data structure folder
+
 javac ProgramDriver.java
+
 java ProgramDriver
 
 ------------------------------
