@@ -26,5 +26,17 @@ public class ProgramDriver {
 		dll.deleteAtBegin();
 		dll.print();
 
+		// Deleting from end
+		dll.deleteAtEnd();
+		dll.print();
+
+		// Deleting at index
+		dll.deleteAtIndex(2);
+		dll.print();
+
+		// Searching for an element in the doubly linked list
+		dll.findAtIndex(1);
+		
+
 	}
 }
