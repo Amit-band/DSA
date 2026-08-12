@@ -21,5 +21,10 @@ public class ProgramDriver {
 		dll.addAtIndex(3, 25);
 		dll.print();
 
+
+		// Deleting from start
+		dll.deleteAtBegin();
+		dll.print();
+
 	}
 }

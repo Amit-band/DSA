@@ -89,7 +89,38 @@ public class DoublyLinkedList {
 		length++;
 	}
 	
-//	
+//	Deletion from Start
+public void deleteAtBegin() {
+		if(head == null) {
+			System.out.println("List is Empty");
+			return;
+		}
+		if(head == tail) {
+			head = tail = null;
+			length--;
+			return;
+		}
+		head = head.next;
+		head.prev.next = null;
+		head.prev = null;
+		length--;
+	}
+
+	public void deleteAtEnd() {
+		if(head == null) {
+			System.out.println("List is Empty");
+			return;
+		}
+		if(head == tail) {
+			head = tail = null;
+			length--;
+			return;
+		}
+		tail = tail.prev;
+		tail.next.prev = null;
+		tail.next = null;
+		length--;
+	}
 	
 	
 }
