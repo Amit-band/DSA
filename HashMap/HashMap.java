@@ -33,4 +33,16 @@ public class HashMap {
 		// TODO Auto-generated method stub
 		return key%buckets.length;
 	}
+
+	public String get(int key){
+		int index = getIndex(key);
+		Node temp = buckets[index];
+		while(temp!=null){
+			if(temp.key == key){
+				return temp.value;
+			}
+			temp = temp.next;
+		}
+		return "No Such Key";
+	}
 }

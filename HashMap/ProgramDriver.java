@@ -7,6 +7,10 @@ public class ProgramDriver {
 		hm.put(103, "Eleven");
 		hm.put(106, "Massom");
 		hm.put(111, "Virat");
+
+
+
+		System.out.println(hm.get(106));
 		System.out.println(hm.buckets[3].key);
 		System.out.println(hm.buckets[3].value);
 		
