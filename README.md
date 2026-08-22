@@ -1,121 +1,312 @@
-# Updated Java DSA README
-## Java DSA for Beginners
-A beginner-friendly repository dedicated to learning, implementing, and mastering Data Structures and Algorithms (DSA) from scratch using Java. This project provides clean, highly readable, and heavily commented implementations of fundamental concepts to help you build a bulletproof computer science foundation.
-------------------------------
-## 📸 Repository Structure
-The repository is organized into distinct, self-contained directories. Each folder focuses on a single data structure, containing the source implementation along with a minimal local explanation.
+# Java DSA for Beginners
 
-├── LinkedList/         # Singly Linked List operations (Insert, Delete, Search)
+A beginner-friendly repository for learning, implementing, and practicing **Data Structures and Algorithms (DSA) from scratch using Java**.
 
-├── DoublyLinkedList/   # Doubly Linked List with bi-directional traversal (Insert, Delete)
+This repository contains my implementations and practice programs as I progress through Java and DSA. The focus is on understanding the underlying logic, writing readable code, and building a strong foundation for problem solving.
 
-└── README.md           # This master documentation file
+---
 
-------------------------------
+## 📂 Repository Structure
+
+The project is maintained as a Java project using **Eclipse**, with all source code organized under `src/`.
+
+```text
+DSA/
+├── src/
+│   ├── linkedList/
+│   │   ├── LinkedList.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── doublyLinkedList/
+│   │   ├── DoublyLinkedList.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── doublyendedqueue/
+│   │   ├── DoublyEndedQueue.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── stack/
+│   │   ├── Stack.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── queue/
+│   │   ├── Queue.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── hashmap/
+│   │   ├── HashMap.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   ├── hashmapGenerics/
+│   │   ├── HashMap.java
+│   │   ├── Node.java
+│   │   └── ProgramDriver.java
+│   │
+│   └── module-info.java
+│
+├── .classpath
+├── .project
+├── .gitignore
+└── README.md
+```
+
+Each package contains the implementation of a particular data structure along with supporting `Node` classes and `ProgramDriver` classes used for testing and experimentation.
+
+---
+
 ## ✨ Features
 
-* Beginner-Centric Code: Avoids overly advanced language shortcuts or complex architectural patterns to keep the underlying algorithm clear and readable.
-* Deeply Commented: Every single pointer modification, head change, or array re-indexing step is annotated with comments explaining the exact logic.
-* Zero External Dependencies: Built entirely using native Java language constructs (java.lang). No external tools or compilation frameworks are necessary.
-* Runnable Demonstrations: Every structure contains a local main execution routine so you can observe the input-to-output modifications instantly.
+* **Beginner-Friendly:** Implementations focus on understanding the core logic rather than relying on advanced Java shortcuts.
+* **From Scratch:** Data structures are implemented manually to understand how they work internally.
+* **Generic Implementations:** Includes experiments with Java Generics, such as a generic `HashMap<T, P>`.
+* **Hands-On Practice:** Each data structure includes driver programs for testing different operations and edge cases.
+* **Readable Code:** Code is organized into separate packages according to the data structure being implemented.
+* **No External Dependencies:** The implementations use standard Java features and do not require external libraries.
 
-------------------------------
-## 🛠️ Tech Stack & Requirements
+---
 
-| Component | Specification |
-|---|---|
-| Language | Java (JDK 8 or higher recommended) |
-| IDE Compatibility | IntelliJ IDEA, Eclipse (Recommended), VS Code, or Command Line |
-| Testing Architecture | Native execution via standard logging |
+## 🛠️ Tech Stack
 
-------------------------------
+| Component       | Technology |
+| --------------- | ---------- |
+| Language        | Java       |
+| JDK             | JDK 8+     |
+| IDE             | Eclipse    |
+| Version Control | Git        |
+| Repository      | GitHub     |
+
+---
+
 ## 🚀 Getting Started
-Follow these steps to download the source files and run the implementations locally on your computer.
-## Prerequisites
-Ensure you have the Java Development Kit (JDK) installed on your machine. You can verify your system configuration by executing the following in your terminal:
 
+### Prerequisites
+
+Make sure the **Java Development Kit (JDK)** is installed.
+
+Verify your installation:
+
+```bash
 java -version
+javac -version
+```
 
-## Installation & Execution
+### Clone the Repository
 
-   1. Clone the repository:
-   
-   git clone https://github.com/Amit-band/DSA.git
-   
-   2. Navigate into the project directory:
-   
-   cd DSA
-   
-   3. Open in your favorite IDE:
-   Import the root directory as an existing project inside IntelliJ IDEA, Eclipse, or your preferred development studio.
+```bash
+git clone https://github.com/Amit-band/DSA.git
+```
 
-## Running via Command Line
-Follow these steps to compile and execute manually in any terminal setup:
+Navigate into the project:
 
+```bash
 cd DSA
+```
 
-cd LinkedList # Or navigate to any other data structure folder
+### Open in Eclipse
 
-javac ProgramDriver.java
+1. Open Eclipse.
+2. Select **File → Import**.
+3. Choose **Existing Projects into Workspace**.
+4. Select the cloned `DSA` directory.
+5. Import the project.
 
-java ProgramDriver
+The source code is located inside:
 
-------------------------------
-## 💡 Usage Example
-Every folder contains a fully runnable file showing how the data structure functions in practice. For instance, to initialize and use the LinkedList component:
+```text
+src/
+```
 
-public class Main {
-    public static void main(String[] args) {
-        // Instantiate a beginner-friendly Singly Linked List
-        LinkedList ll = new LinkedList();
+---
 
-        // Sequentially insert elements
-        ll.add(10);
-        ll.add(20);
-        ll.add(30);
+## 🧪 Running the Programs
 
-        System.out.println("Current List Structure:");
-        ll.print(); 
-        // Expected Console Output: 10 -> 20 -> 30 -> null
-    }
-}
+Each package contains a `ProgramDriver.java` file that can be used to test the corresponding data structure.
 
-------------------------------
+For example:
+
+```text
+src/
+└── linkedList/
+    ├── LinkedList.java
+    ├── Node.java
+    └── ProgramDriver.java
+```
+
+Run `ProgramDriver.java` from Eclipse to experiment with the implementation.
+
+---
+
+## 📚 Current Implementations
+
+### Linear Data Structures
+
+* [x] Singly Linked List
+* [x] Doubly Linked List
+* [x] Doubly Ended Queue
+* [x] Stack
+* [x] Queue
+
+### Hash-Based Data Structures
+
+* [x] Basic HashMap implementation
+* [x] Generic HashMap implementation
+* [x] Hashing using `hashCode()`
+* [x] Bucket indexing
+* [x] Collision handling using Linked Lists
+* [x] Key comparison using `equals()`
+
+### Upcoming
+
+* [ ] Binary Search Tree
+* [ ] Tree Traversals
+* [ ] AVL Tree
+* [ ] Graphs
+* [ ] BFS
+* [ ] DFS
+* [ ] Searching Algorithms
+* [ ] Sorting Algorithms
+* [ ] Time & Space Complexity
+* [ ] More DSA problem-solving practice
+
+---
+
+## 🧠 What I'm Learning
+
+This repository is not intended to be just a collection of finished implementations. It documents my progression in understanding how data structures work internally.
+
+Some of the concepts being explored include:
+
+* Nodes and references
+* Linked-list traversal
+* Insertion and deletion
+* Generics
+* Hashing
+* `hashCode()` and `equals()`
+* Collision handling
+* Stack and Queue operations
+* Time and Space Complexity
+* Problem-solving and algorithmic thinking
+
+---
+
+## 🔄 Git Workflow
+
+This project is maintained directly from Eclipse using Git.
+
+After making changes:
+
+```bash
+git status
+git add .
+git commit -m "Describe what was practiced"
+git push
+```
+
+Example:
+
+```bash
+git add .
+git commit -m "Implement generic HashMap"
+git push
+```
+
+---
+
 ## 🗺️ Roadmap
 
-* Complete basic linear modules (LinkedList, DoublyLinkedList)
-* Complete fundamental tracking structures (Stack, Queue)
-* Add advanced hierarchical structures (BinarySearchTree, AVLTree)
-* Implement foundational graphs and traversal models (BFS, DFS)
-* Incorporate interactive Time and Space Complexity (Big-O) cheat sheets
+The repository will continue to grow as I progress through Java and DSA.
 
-------------------------------
+```text
+Java Fundamentals
+       ↓
+Arrays & Strings
+       ↓
+Linked Lists
+       ↓
+Stack & Queue
+       ↓
+Hashing
+       ↓
+Searching & Sorting
+       ↓
+Trees
+       ↓
+Graphs
+       ↓
+Advanced DSA
+       ↓
+Problem Solving
+```
+
+The goal is to build a strong understanding of DSA concepts through **implementation + experimentation + problem solving**, rather than simply memorizing algorithms.
+
+---
+
 ## 🤝 Contributing
-Contributions are highly valued! If you want to make explanations clearer, fix an algorithmic bug, or submit an entirely new data structure folder, your help is welcome:
 
-   1. Fork the Project
-   2. Create your Feature Branch (git checkout -b feature/AmazingDataStructure)
-   3. Commit your Changes (git commit -m 'Add BinarySearchTree implementation')
-   4. Push to the Branch (git push origin feature/AmazingDataStructure)
-   5. Open a Pull Request
+This repository primarily documents my personal Java and DSA learning journey.
 
-------------------------------
+Suggestions, corrections, and improvements are welcome.
+
+If you would like to contribute:
+
+1. Fork the repository.
+2. Create a feature branch:
+
+```bash
+git checkout -b feature/AmazingDataStructure
+```
+
+3. Commit your changes:
+
+```bash
+git commit -m "Add Binary Search Tree implementation"
+```
+
+4. Push the branch:
+
+```bash
+git push origin feature/AmazingDataStructure
+```
+
+5. Open a Pull Request.
+
+---
+
 ## 📄 License
-Distributed under the MIT License. See LICENSE for more information.
-------------------------------
-## 📬 Contact & Support
 
-* Project Maintainer: Your Name – bandamit687@gmail.com
-* Project Link: https://github.com/Amit-band/DSA
+Distributed under the MIT License. See `LICENSE` for more information.
 
-------------------------------
-## 📚 Resources & References
+---
 
-* Java Algorithms & Interview Preparation: PW Skills Technical Blog
-* Pointer Manipulation Slide Deck: SlideShare Linked List Guide
-* Visual Roadmap Overviews: Instagram Educational Insight
-* Graph Traversal Walkthroughs: Great Learning Graph Theory on YouTube
-* Comprehensive DSA Roadmap: AlgoZenith Study Guide
-* Problem-Solving Repositories: LeetCode Reference Workspace on GitHub
+## 📬 Contact
 
+**Project Maintainer:** Amit
 
+**Email:** [bandamit687@gmail.com](mailto:bandamit687@gmail.com)
+
+**GitHub:** https://github.com/Amit-band
+
+**Repository:** https://github.com/Amit-band/DSA
+
+---
+
+## 📚 Resources
+
+This repository is primarily based on hands-on practice and implementation. Additional learning resources include:
+
+* Java documentation and standard library references
+* DSA tutorials and algorithm visualizations
+* Competitive programming and problem-solving platforms
+* Git and GitHub documentation
+* Java programming courses and educational resources
+
+---
+
+> **Learn the concept. Implement it from scratch. Break it. Fix it. Understand it.**
