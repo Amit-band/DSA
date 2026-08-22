@@ -11,6 +11,12 @@ public class ProgramDriver {
 		hm.put(111, "Virat");
 		System.out.println(hm.get(106));
 		
+		hm.remove(101);
+		
+		System.out.println(hm.containsKey(101));
+		System.out.println(hm.containsValue("Virat"));
+		
+		
 		
 //		System.out.println(hm.buckets[3].key);
 //		System.out.println(hm.buckets[3].value);
