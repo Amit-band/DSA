@@ -13,7 +13,7 @@ public class ProgramDriver {
 		System.out.println(trs.confirmedTickedHead.data.getId());
 		System.out.println(trs.waitingQueueHead.data.getId());
 		System.out.println(trs.waitingQueueTail.data.getId());
-		trs.cancelticket(101);
+		trs.cancelticket(99);
 		System.out.println(trs.confirmedTickedHead.data.getId());
 		trs.cancelticket(102);
 		System.out.println(trs.confirmedTickedHead.data.getId());

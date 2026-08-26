@@ -44,19 +44,23 @@ public class TrainReservationSystem {
 			}else {
 				System.out.println("No tickets left in waiting list");
 			}
-		}else{
-			while(temp.next.data.getId()!=id) {
-				temp = temp.next;
-			}
-			Node temp2 = temp.next.next;
-			temp.next = temp2;
-			temp2 = null;
-			length--;
-			if(waitingQueueHead!=null) {
-				bookticket(waitingQueueHead.data.getId(),waitingQueueHead.data.getName(),waitingQueueHead.data.getAge());
-				waitingQueueHead = waitingQueueHead.next;
-			}else {
-				System.out.println("No tickets left in waiting list");
+		}else {
+			try {
+				while(temp.next.data.getId()!=id) {
+					temp = temp.next;
+				}
+				Node temp2 = temp.next.next;
+				temp.next = temp2;
+				temp2 = null;
+				length--;
+				if(waitingQueueHead!=null) {
+					bookticket(waitingQueueHead.data.getId(),waitingQueueHead.data.getName(),waitingQueueHead.data.getAge());
+					waitingQueueHead = waitingQueueHead.next;
+				}else {
+					System.out.println("No tickets left in waiting list");
+				}
+			}catch(Exception e) {
+				System.out.println("Ticket Id is inavlid");
 			}
 		}
 		
