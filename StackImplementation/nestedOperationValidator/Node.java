@@ -1,10 +1,10 @@
 package nestedOperationValidator;
 
 public class Node {
-	String data;
+	char data;
 	Node next;
 	
-	public Node(String data) {
+	public Node(char data) {
 		this.data = data;
 	}
 }

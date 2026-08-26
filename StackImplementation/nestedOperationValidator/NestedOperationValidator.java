@@ -3,7 +3,7 @@ package nestedOperationValidator;
 public class NestedOperationValidator {
 	Node head;
 
-	public void start(String data) {
+	public void start(char data) {
 		// TODO Auto-generated method stub
 		Node nn = new Node(data);
 		if(head==null) {
@@ -14,22 +14,25 @@ public class NestedOperationValidator {
 		head = nn;
 	}
 
-	public String end(String data) {
-		if(head == null) {
-			return "valid";
-		}
+	public boolean end(char arr) {
 		Node temp = head;
-		if(temp.data == data) {
+		if(head == null) {
+			return  false;
+		}
+		if(temp.data==arr) {
 			head = temp.next;
 			temp.next = null;
-			if(head==null) {
-				return "valid";
-			}else {
-				return "invalid";
+			return true;
+		}else{
+			return false;
 			}
-		}else {
-			return "invalid";
-			}
+	}
+	
+	public boolean isEmpty() {
+		if(head==null) {
+			return true;
+		}
+		return false;
 	}
 
 }
