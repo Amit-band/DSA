@@ -1,4 +1,4 @@
-package lambda;
+ package lambda;
 
 public class ProgramDriver {
 	public static void main(String[] args) {
@@ -11,6 +11,7 @@ public class ProgramDriver {
 			System.out.println(c);
 		};
 		c2.calclulate(10, 20);
+		
 		
 		Demo d1 = (int a)->{
 			System.out.println("amit");
