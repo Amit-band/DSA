@@ -2,15 +2,15 @@ package binarySearchTree;
 
 public class ProgramDriver {
 	public static void main(String[] args) {
-		BinaryTree bt = new BinaryTree();
-		bt.root = bt.insert(bt.root, 50);
-		bt.insert(bt.root, 70);
-		bt.insert(bt.root, 30);
-		bt.insert(bt.root, 20);
-		bt.insert(bt.root, 40);
-		bt.insert(bt.root, 80);
-		bt.insert(bt.root, 60);
-		bt.print(bt.root);
+		BinarySearchTree bst = new BinarySearchTree();
+		bst.root = bst.insert(bst.root, 50);
+		bst.insert(bst.root, 70);
+		bst.insert(bst.root, 30);
+		bst.insert(bst.root, 20);
+		bst.insert(bst.root, 40);
+		bst.insert(bst.root, 80);
+		bst.insert(bst.root, 60);
+		bst.inOrder(bst.root);
 //		System.out.println(bt.root.data);
 //		System.out.println(bt.root.left.data);
 //		System.out.println(bt.root.right.data);
@@ -20,8 +20,10 @@ public class ProgramDriver {
 		System.out.println();
 //		System.out.println(bt.root.left.left.data);
 //		System.out.println(bt.root.right.data);
-		System.out.println(bt.isPresent(bt.root,70));
-		
+		System.out.println(bst.isPresent(bst.root,70));
+		bst.preOrder(bst.root);
+		System.out.println();
+		bst.postOrder(bst.root);
 		
 	}
 }

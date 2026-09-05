@@ -1,6 +1,6 @@
 package binarySearchTree;
 
-public class BinaryTree {
+public class BinarySearchTree {
 	Node root;
 //	public void add(int data) {
 //		Node nn = new Node(data);
@@ -52,17 +52,35 @@ public class BinaryTree {
 		return false; 
 	}
 
-	public void print(Node root) {
+	
+	
+//	inOrder -> left-root-right
+	public void inOrder(Node root) {
 		if(root == null) {
 			return;
 		};
-		print(root.left);
+		inOrder(root.left);
 		System.out.print(root.data+" ");
-		print(root.right);
-		return;
+		inOrder(root.right);
 	}
 	
 	
+//	postdOrder -> root-left-right
+	public void preOrder(Node root) {
+		if(root==null) return;
+		System.out.print(root.data+" ");
+		preOrder(root.left);
+		preOrder(root.right);
+	}
+	
+	
+// preOrder -> left-right-root
+	public void postOrder(Node root) {
+		if(root == null) return;
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.print(root.data+" ");
+	}
 	
 	
 }
