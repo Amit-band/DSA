@@ -1,8 +1,8 @@
-package binaryTree;
+package binarySearchTree;
 
 public class Node {
-	Node prev;
-	Node next;
+	Node left;
+	Node right;
 	int data;
 	
 	public Node(int data) {
