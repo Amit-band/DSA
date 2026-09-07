@@ -152,6 +152,7 @@ Run `ProgramDriver.java` from Eclipse to experiment with the implementation.
 * [x] Stack
 * [x] Queue
 * [x] Binary Search Tree
+* [x]  Tree Traversals
 
 ### Hash-Based Data Structures
 
@@ -164,7 +165,6 @@ Run `ProgramDriver.java` from Eclipse to experiment with the implementation.
 
 ### Upcoming
 
-* [ ] Binary Search Tree
 * [ ] Tree Traversals
 * [ ] AVL Tree
 * [ ] Graphs
@@ -174,6 +174,16 @@ Run `ProgramDriver.java` from Eclipse to experiment with the implementation.
 * [ ] Sorting Algorithms
 * [ ] Time & Space Complexity
 * [ ] More DSA problem-solving practice
+
+---
+
+---
+
+## 📚 Question on learned concepts
+
+### Stack Based Question
+
+-> visit the Stack Implementation Folder
 
 ---
 
