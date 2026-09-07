@@ -151,6 +151,7 @@ Run `ProgramDriver.java` from Eclipse to experiment with the implementation.
 * [x] Doubly Ended Queue
 * [x] Stack
 * [x] Queue
+* [x] Binary Search Tree
 
 ### Hash-Based Data Structures
 
