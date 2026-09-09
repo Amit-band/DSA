@@ -1,0 +1,846 @@
+# Problem 02 — Customer Service Ticket System
+
+## Difficulty
+
+Easy → Medium
+
+## Data Structure Focus
+
+Queue
+
+---
+
+# 1. Problem Statement
+
+You are building a **Customer Service Ticket System** for a company.
+
+Customers can submit support tickets when they experience a problem.
+
+For example:
+
+```text
+Rahul → Internet not working
+Priya → Cannot login
+Arun  → Payment failed
+```
+
+There is currently **one support agent** available to handle these tickets.
+
+The company follows a simple policy:
+
+> **Support tickets must be handled in the exact order in which they were submitted.**
+
+Therefore, the oldest unresolved ticket must always be handled first.
+
+A newly submitted ticket cannot be handled before tickets that are already waiting.
+
+Your task is to implement a system that manages these customer support tickets.
+
+---
+
+# 2. Objective
+
+Implement a **Customer Service Ticket System** using a Queue.
+
+The system must allow the support agent to:
+
+1. Submit a new customer ticket.
+2. View the next ticket that will be handled.
+3. Resolve the next ticket.
+4. Display all unresolved tickets in processing order.
+
+The primary goal is to recognize that the requirement naturally follows the **FIFO principle**.
+
+---
+
+# 3. Ticket Information
+
+Each support ticket contains two pieces of information:
+
+```text
+Customer Name
+Issue
+```
+
+For example:
+
+```text
+Customer: Rahul
+Issue: Internet not working
+```
+
+Each submitted ticket represents one unresolved customer request.
+
+---
+
+# 4. Supported Operations
+
+Your system must support the following operations.
+
+---
+
+## SUBMIT
+
+Adds a new customer support ticket to the waiting system.
+
+### Format
+
+```text
+SUBMIT <CustomerName> <Issue>
+```
+
+### Example
+
+```text
+SUBMIT Rahul "Internet not working"
+```
+
+The ticket should be added to the end of the waiting system.
+
+If the current tickets are:
+
+```text
+Rahul → Internet not working
+Priya → Cannot login
+```
+
+and Arun submits a new ticket:
+
+```text
+SUBMIT Arun "Payment failed"
+```
+
+the waiting order becomes:
+
+```text
+Rahul → Priya → Arun
+```
+
+---
+
+# 5. NEXT
+
+Displays the ticket that the support agent will handle next.
+
+The operation must **not remove or modify** the ticket.
+
+### Example
+
+If the waiting tickets are:
+
+```text
+Rahul → Internet not working
+Priya → Cannot login
+Arun  → Payment failed
+```
+
+then:
+
+```text
+NEXT
+```
+
+should produce:
+
+```text
+Next Ticket:
+Customer: Rahul
+Issue: Internet not working
+```
+
+The Queue must remain unchanged.
+
+Calling `NEXT` again should still return Rahul's ticket.
+
+---
+
+# 6. RESOLVE
+
+The support agent resolves the oldest unresolved ticket.
+
+The resolved ticket must be removed from the waiting system.
+
+### Example
+
+Before resolving:
+
+```text
+Rahul → Internet not working
+Priya → Cannot login
+Arun  → Payment failed
+```
+
+After:
+
+```text
+RESOLVE
+```
+
+the system should display:
+
+```text
+Resolved:
+Customer: Rahul
+Issue: Internet not working
+```
+
+The waiting tickets then become:
+
+```text
+Priya → Cannot login
+Arun  → Payment failed
+```
+
+The next ticket is now Priya's.
+
+---
+
+# 7. DISPLAY
+
+Displays all currently unresolved tickets in the order in which they will be handled.
+
+### Example
+
+If the waiting tickets are:
+
+```text
+Priya → Cannot login
+Arun  → Payment failed
+Sneha → Account locked
+```
+
+then:
+
+```text
+DISPLAY
+```
+
+should produce:
+
+```text
+Waiting Tickets:
+Customer: Priya
+Issue: Cannot login
+Customer: Arun
+Issue: Payment failed
+Customer: Sneha
+Issue: Account locked
+```
+
+`DISPLAY` must not remove or modify any ticket.
+
+---
+
+# 8. Empty Queue Behavior
+
+The system must correctly handle operations when there are no unresolved tickets.
+
+### NEXT
+
+If there are no tickets:
+
+```text
+NEXT
+```
+
+Output:
+
+```text
+No tickets available.
+```
+
+---
+
+### RESOLVE
+
+If there are no tickets:
+
+```text
+RESOLVE
+```
+
+Output:
+
+```text
+No tickets available.
+```
+
+---
+
+### DISPLAY
+
+If there are no tickets:
+
+```text
+DISPLAY
+```
+
+Output:
+
+```text
+No tickets available.
+```
+
+The program must not crash or attempt to access a nonexistent ticket.
+
+---
+
+# 9. Input Format
+
+The input consists of a sequence of commands.
+
+Each command is one of:
+
+```text
+SUBMIT <CustomerName> <Issue>
+NEXT
+RESOLVE
+DISPLAY
+```
+
+`SUBMIT` contains:
+
+* Customer name
+* Issue description
+
+The issue may contain multiple words.
+
+### Example
+
+```text
+SUBMIT Rahul "Internet connection is not working"
+```
+
+Commands can occur in any valid order.
+
+---
+
+# 10. Output Format
+
+For `NEXT`:
+
+```text
+Next Ticket:
+Customer: <CustomerName>
+Issue: <Issue>
+```
+
+For `RESOLVE`:
+
+```text
+Resolved:
+Customer: <CustomerName>
+Issue: <Issue>
+```
+
+For `DISPLAY`:
+
+```text
+Waiting Tickets:
+Customer: <CustomerName>
+Issue: <Issue>
+...
+```
+
+If there are no tickets:
+
+```text
+No tickets available.
+```
+
+---
+
+# 11. Sample Input
+
+```text
+SUBMIT Rahul "Internet not working"
+SUBMIT Priya "Cannot login"
+SUBMIT Arun "Payment failed"
+
+NEXT
+
+RESOLVE
+
+NEXT
+
+SUBMIT Sneha "Account locked"
+
+DISPLAY
+
+RESOLVE
+RESOLVE
+RESOLVE
+RESOLVE
+```
+
+---
+
+# 12. Sample Output
+
+```text
+Next Ticket:
+Customer: Rahul
+Issue: Internet not working
+
+Resolved:
+Customer: Rahul
+Issue: Internet not working
+
+Next Ticket:
+Customer: Priya
+Issue: Cannot login
+
+Waiting Tickets:
+Customer: Priya
+Issue: Cannot login
+Customer: Arun
+Issue: Payment failed
+Customer: Sneha
+Issue: Account locked
+
+Resolved:
+Customer: Priya
+Issue: Cannot login
+
+Resolved:
+Customer: Arun
+Issue: Payment failed
+
+Resolved:
+Customer: Sneha
+Issue: Account locked
+
+No tickets available.
+```
+
+---
+
+# 13. Queue Behavior Example
+
+Consider these operations:
+
+```text
+SUBMIT A IssueA
+SUBMIT B IssueB
+SUBMIT C IssueC
+```
+
+The Queue should conceptually be:
+
+```text
+FRONT
+  ↓
+[A] → [B] → [C]
+              ↑
+             REAR
+```
+
+The oldest ticket is `A`.
+
+When:
+
+```text
+RESOLVE
+```
+
+is executed:
+
+```text
+A
+```
+
+must be removed.
+
+The Queue becomes:
+
+```text
+FRONT
+  ↓
+[B] → [C]
+       ↑
+      REAR
+```
+
+The next ticket is now `B`.
+
+Therefore, the resolution order must always be:
+
+```text
+A → B → C
+```
+
+regardless of how many times `NEXT` or `DISPLAY` are called.
+
+---
+
+# 14. Important Behavioral Rules
+
+### Rule 1 — Submission Order Must Be Preserved
+
+If:
+
+```text
+A
+B
+C
+D
+```
+
+are submitted in that order, they must be resolved:
+
+```text
+A
+B
+C
+D
+```
+
+---
+
+### Rule 2 — NEXT Must Not Remove
+
+Calling:
+
+```text
+NEXT
+NEXT
+NEXT
+```
+
+without resolving the ticket must always return the same oldest ticket.
+
+---
+
+### Rule 3 — DISPLAY Must Not Remove
+
+Calling:
+
+```text
+DISPLAY
+DISPLAY
+```
+
+without resolving anything must show the same tickets in the same order.
+
+---
+
+### Rule 4 — RESOLVE Removes Only One Ticket
+
+Each `RESOLVE` operation must process exactly **one** ticket.
+
+---
+
+### Rule 5 — Newly Submitted Tickets Go Behind Existing Tickets
+
+If:
+
+```text
+A
+B
+```
+
+are waiting and then:
+
+```text
+C
+```
+
+is submitted, the order must remain:
+
+```text
+A → B → C
+```
+
+C must not move ahead of A or B.
+
+---
+
+# 15. Edge Cases
+
+Your implementation should handle at least the following cases.
+
+---
+
+## Case 1 — Resolve Empty Queue
+
+```text
+RESOLVE
+```
+
+Expected:
+
+```text
+No tickets available.
+```
+
+---
+
+## Case 2 — NEXT Empty Queue
+
+```text
+NEXT
+```
+
+Expected:
+
+```text
+No tickets available.
+```
+
+---
+
+## Case 3 — Display Empty Queue
+
+```text
+DISPLAY
+```
+
+Expected:
+
+```text
+No tickets available.
+```
+
+---
+
+## Case 4 — Single Ticket
+
+```text
+SUBMIT Rahul "Password reset"
+RESOLVE
+```
+
+After resolving Rahul's ticket, the Queue must become empty.
+
+Both Queue ends must be updated correctly.
+
+---
+
+## Case 5 — NEXT Without RESOLVE
+
+```text
+SUBMIT Rahul "Cannot login"
+SUBMIT Priya "Payment failed"
+
+NEXT
+NEXT
+```
+
+Both operations should return:
+
+```text
+Rahul
+```
+
+The Queue must remain unchanged.
+
+---
+
+## Case 6 — Add After Resolution
+
+```text
+SUBMIT Rahul "Internet problem"
+RESOLVE
+SUBMIT Priya "Cannot login"
+NEXT
+```
+
+The next ticket should be Priya's.
+
+---
+
+## Case 7 — Resolve All Tickets
+
+```text
+SUBMIT A IssueA
+SUBMIT B IssueB
+SUBMIT C IssueC
+
+RESOLVE
+RESOLVE
+RESOLVE
+RESOLVE
+```
+
+The first three operations resolve A, B, and C.
+
+The fourth operation must correctly handle the empty Queue.
+
+---
+
+## Case 8 — Display Without Modification
+
+```text
+SUBMIT A IssueA
+SUBMIT B IssueB
+SUBMIT C IssueC
+
+DISPLAY
+DISPLAY
+```
+
+Both `DISPLAY` operations must show:
+
+```text
+A
+B
+C
+```
+
+in the same order.
+
+---
+
+# 16. Requirements
+
+Your implementation must:
+
+* Follow the FIFO principle.
+* Preserve ticket submission order.
+* Process the oldest unresolved ticket first.
+* Add new tickets behind existing tickets.
+* Ensure `NEXT` does not remove a ticket.
+* Ensure `DISPLAY` does not remove tickets.
+* Ensure `RESOLVE` removes exactly one ticket.
+* Correctly handle an empty Queue.
+* Correctly handle a Queue containing one ticket.
+* Correctly update both Queue ends when the last ticket is resolved.
+* Avoid unnecessary data structures.
+* Keep Queue operations efficient.
+
+---
+
+# 17. DSA Recognition
+
+Before implementing the system, answer the following questions.
+
+### Question 1
+
+Which data structure is naturally suited for this problem?
+
+Explain why.
+
+---
+
+### Question 2
+
+What characteristic of the customer-service system makes FIFO appropriate?
+
+Explain using the real-world requirement.
+
+---
+
+### Question 3
+
+Map each system operation to a Queue operation:
+
+| System Operation | Queue Operation |
+| ---------------- | --------------- |
+| `SUBMIT`         | ?               |
+| `NEXT`           | ?               |
+| `RESOLVE`        | ?               |
+| `DISPLAY`        | ?               |
+
+---
+
+### Question 4
+
+What should happen when `RESOLVE` is called on an empty Queue?
+
+---
+
+### Question 5
+
+What should happen to the Queue when the only remaining ticket is resolved?
+
+---
+
+### Question 6
+
+Why must `NEXT` and `DISPLAY` leave the Queue unchanged?
+
+---
+
+# 18. Complexity Goal
+
+Try to achieve:
+
+| Operation | Target Complexity |
+| --------- | ----------------: |
+| `SUBMIT`  |          **O(1)** |
+| `NEXT`    |          **O(1)** |
+| `RESOLVE` |          **O(1)** |
+| `DISPLAY` |          **O(n)** |
+
+Where `n` is the number of unresolved tickets.
+
+The total space used should be:
+
+```text
+O(n)
+```
+
+---
+
+# 19. Restrictions
+
+For this exercise:
+
+* The primary data structure must be a **Queue**.
+* Do not replace the Queue with another data structure.
+* Do not introduce unnecessary algorithms.
+* Do not sort the tickets.
+* Do not search for the next ticket.
+* The ticket order must naturally emerge from the Queue.
+* You may implement the Queue using a linked structure.
+* You may create a separate class to represent a support ticket if needed.
+
+---
+
+# 20. Learning Goal
+
+The purpose of this problem is to strengthen the following DSA recognition pattern:
+
+> **When requests arrive over time and every request must be handled in arrival order, think Queue.**
+
+The real-world mapping is:
+
+```text
+Customer submits ticket
+        ↓
+     ENQUEUE
+
+Oldest ticket
+        ↓
+       PEEK
+        ↓
+     NEXT ticket
+
+Agent handles ticket
+        ↓
+     DEQUEUE
+        ↓
+      RESOLVE
+
+All waiting tickets
+        ↓
+     TRAVERSE
+        ↓
+      DISPLAY
+```
+
+The important part is not simply implementing a Queue.
+
+The goal is to look at the requirement:
+
+> "Customers submit tickets, and the oldest unresolved ticket must always be handled first."
+
+and immediately recognize:
+
+```text
+                  FIFO
+                   ↓
+                 Queue
+```
+
+Design and implement the system yourself before looking for an implementation approach.

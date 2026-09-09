@@ -21,7 +21,7 @@ public class Queue {
 //	peek()	
 	public int peek() {
 		if(rear == null) {
-			System.out.println("Queue is Emptyh!");
+			System.out.println("Queue is Empty!");
 			return -1;
 		}
 		return rear.data;

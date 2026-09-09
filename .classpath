@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="StackImplementation"/>
 	<classpathentry kind="src" path="lamda"/>
+	<classpathentry kind="src" path="Queue-Questions"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,605 @@
+# Problem 01 — Printer Management System
+
+## Difficulty
+
+Easy
+
+## Data Structure Focus
+
+Queue
+
+---
+
+## 1. Problem Statement
+
+You are building a **Printer Management System** for an office.
+
+The office has a single printer, and multiple users can submit documents for printing.
+
+Since the printer can process only one document at a time, print jobs must be processed in the **same order in which they were submitted**.
+
+For example, if the following jobs are submitted:
+
+```text
+Alice → report.pdf
+Bob   → notes.pdf
+John  → assignment.pdf
+```
+
+the printer must process them in this order:
+
+```text
+Alice → Bob → John
+```
+
+A newly submitted print job must not be processed before the jobs that were already waiting.
+
+Your task is to implement a system that manages these print jobs.
+
+---
+
+# 2. Objective
+
+Implement a Printer Management System using a **Queue**.
+
+The system must allow users to:
+
+1. Add a new print job.
+2. View the next print job without removing it.
+3. Process the next print job.
+4. Display all waiting print jobs in processing order.
+
+The primary goal of this problem is to recognize and apply the **FIFO principle** of a Queue.
+
+---
+
+# 3. Print Job Information
+
+Each print job contains two pieces of information:
+
+```text
+User Name
+Document Name
+```
+
+For example:
+
+```text
+User: Alice
+Document: report.pdf
+```
+
+---
+
+# 4. Supported Operations
+
+Your system must support the following operations.
+
+## ADD
+
+Adds a new print job to the printer's waiting queue.
+
+### Format
+
+```text
+ADD <UserName> <DocumentName>
+```
+
+### Example
+
+```text
+ADD Alice report.pdf
+```
+
+The job is added to the waiting system.
+
+---
+
+## NEXT
+
+Displays the print job that will be processed next.
+
+The operation must **not remove** the job from the queue.
+
+### Example
+
+If the queue contains:
+
+```text
+Alice → report.pdf
+Bob   → notes.pdf
+John  → assignment.pdf
+```
+
+then:
+
+```text
+NEXT
+```
+
+should display:
+
+```text
+Next Job:
+User: Alice
+Document: report.pdf
+```
+
+The queue must remain unchanged.
+
+---
+
+## PRINT
+
+Processes the next available print job.
+
+The oldest waiting print job must be selected and removed from the queue after processing.
+
+### Example
+
+If the queue contains:
+
+```text
+Alice → report.pdf
+Bob   → notes.pdf
+John  → assignment.pdf
+```
+
+then:
+
+```text
+PRINT
+```
+
+should produce:
+
+```text
+Printing:
+User: Alice
+Document: report.pdf
+```
+
+After printing, the queue becomes:
+
+```text
+Bob → notes.pdf
+John → assignment.pdf
+```
+
+---
+
+## DISPLAY
+
+Displays all currently waiting print jobs in the order in which they will be processed.
+
+### Example
+
+If the queue contains:
+
+```text
+Bob   → notes.pdf
+John  → assignment.pdf
+Sara  → presentation.pdf
+```
+
+then:
+
+```text
+DISPLAY
+```
+
+should produce:
+
+```text
+Waiting Jobs:
+User: Bob
+Document: notes.pdf
+User: John
+Document: assignment.pdf
+User: Sara
+Document: presentation.pdf
+```
+
+The `DISPLAY` operation must not remove any jobs.
+
+---
+
+# 5. Empty Queue Behavior
+
+The system must correctly handle operations when there are no waiting print jobs.
+
+### PRINT
+
+If `PRINT` is called when the queue is empty:
+
+```text
+No print jobs available.
+```
+
+### NEXT
+
+If `NEXT` is called when the queue is empty:
+
+```text
+No print jobs available.
+```
+
+### DISPLAY
+
+If `DISPLAY` is called when the queue is empty:
+
+```text
+No print jobs available.
+```
+
+The program must not crash when these operations are performed on an empty queue.
+
+---
+
+# 6. Input Format
+
+The input consists of a sequence of commands.
+
+Each command is one of:
+
+```text
+ADD <UserName> <DocumentName>
+NEXT
+PRINT
+DISPLAY
+```
+
+### ADD
+
+`ADD` is followed by:
+
+* A user name
+* A document name
+
+Example:
+
+```text
+ADD Amit DSA.pdf
+```
+
+Commands may be executed in any valid order.
+
+---
+
+# 7. Output Format
+
+For each operation that produces output, print the corresponding information.
+
+### NEXT
+
+```text
+Next Job:
+User: <UserName>
+Document: <DocumentName>
+```
+
+### PRINT
+
+```text
+Printing:
+User: <UserName>
+Document: <DocumentName>
+```
+
+### DISPLAY
+
+```text
+Waiting Jobs:
+User: <UserName>
+Document: <DocumentName>
+...
+```
+
+If the queue is empty:
+
+```text
+No print jobs available.
+```
+
+---
+
+# 8. Sample Input
+
+```text
+ADD Alice report.pdf
+ADD Bob notes.pdf
+ADD John assignment.pdf
+NEXT
+PRINT
+PRINT
+DISPLAY
+ADD Sara presentation.pdf
+DISPLAY
+PRINT
+PRINT
+PRINT
+```
+
+---
+
+# 9. Sample Output
+
+```text
+Next Job:
+User: Alice
+Document: report.pdf
+
+Printing:
+User: Alice
+Document: report.pdf
+
+Printing:
+User: Bob
+Document: notes.pdf
+
+Waiting Jobs:
+User: John
+Document: assignment.pdf
+
+Waiting Jobs:
+User: John
+Document: assignment.pdf
+User: Sara
+Document: presentation.pdf
+
+Printing:
+User: John
+Document: assignment.pdf
+
+Printing:
+User: Sara
+Document: presentation.pdf
+
+No print jobs available.
+```
+
+---
+
+# 10. Queue Behavior Example
+
+Consider the following operations:
+
+```text
+ADD A FileA
+ADD B FileB
+ADD C FileC
+```
+
+The Queue should conceptually contain:
+
+```text
+FRONT
+  ↓
+[A] → [B] → [C]
+              ↑
+             REAR
+```
+
+Then:
+
+```text
+PRINT
+```
+
+processes `A`.
+
+Queue becomes:
+
+```text
+FRONT
+  ↓
+[B] → [C]
+       ↑
+      REAR
+```
+
+Another:
+
+```text
+PRINT
+```
+
+processes `B`.
+
+Queue becomes:
+
+```text
+FRONT
+  ↓
+[C]
+ ↑
+REAR
+```
+
+Therefore, the processing order must always be:
+
+```text
+A → B → C
+```
+
+---
+
+# 11. Edge Cases
+
+Your implementation should consider at least the following cases.
+
+### Case 1 — Empty Queue
+
+```text
+PRINT
+```
+
+There are no jobs to process.
+
+---
+
+### Case 2 — Single Job
+
+```text
+ADD Alice report.pdf
+PRINT
+```
+
+After printing, the Queue should become empty.
+
+Both the front and rear state must be handled correctly.
+
+---
+
+### Case 3 — NEXT Without Removing
+
+```text
+ADD Alice report.pdf
+ADD Bob notes.pdf
+NEXT
+NEXT
+```
+
+Both `NEXT` operations should return Alice.
+
+`NEXT` must not modify the Queue.
+
+---
+
+### Case 4 — Add After Processing
+
+```text
+ADD Alice report.pdf
+PRINT
+ADD Bob notes.pdf
+```
+
+Bob's job should become the next job.
+
+---
+
+### Case 5 — Process All Jobs
+
+```text
+ADD A FileA
+ADD B FileB
+ADD C FileC
+PRINT
+PRINT
+PRINT
+PRINT
+```
+
+The first three `PRINT` operations process the three jobs.
+
+The fourth `PRINT` must correctly handle the empty Queue.
+
+---
+
+### Case 6 — Display Without Removing
+
+```text
+ADD A FileA
+ADD B FileB
+DISPLAY
+DISPLAY
+```
+
+Both `DISPLAY` operations should show the same jobs in the same order.
+
+---
+
+# 12. Requirements
+
+Your implementation must:
+
+* Follow **FIFO** ordering.
+* Process jobs in their submission order.
+* Never skip a waiting job.
+* Ensure `NEXT` does not remove a job.
+* Ensure `DISPLAY` does not remove jobs.
+* Correctly handle an empty Queue.
+* Correctly handle a Queue containing one element.
+* Correctly update the Queue after processing a job.
+* Avoid unnecessary data structures.
+* Keep Queue operations efficient.
+
+---
+
+# 13. DSA Recognition
+
+Before writing the implementation, answer these questions:
+
+### 1. Which data structure is naturally suited for this problem?
+
+Explain your choice.
+
+### 2. Why does FIFO match the printer's behavior?
+
+Explain using the real-world scenario.
+
+### 3. Which Queue operation corresponds to each system operation?
+
+| System Operation | Queue Operation |
+| ---------------- | --------------- |
+| ADD              | ?               |
+| NEXT             | ?               |
+| PRINT            | ?               |
+| DISPLAY          | ?               |
+
+Fill this yourself before implementing.
+
+### 4. What happens when the Queue is empty?
+
+Identify the conditions that must be handled.
+
+### 5. What happens when the Queue contains exactly one job?
+
+Explain how the Queue should change after that job is printed.
+
+---
+
+# 14. Complexity Goal
+
+Try to design the system so that:
+
+* Adding a print job is **O(1)**.
+* Processing a print job is **O(1)**.
+* Viewing the next job is **O(1)**.
+* Displaying all jobs is **O(n)**.
+
+Where `n` is the number of waiting print jobs.
+
+---
+
+# 15. Restrictions
+
+For this exercise:
+
+* The primary data structure must be a **Queue**.
+* Do not use another data structure to replace the Queue.
+* Do not introduce unnecessary algorithms.
+* The focus is on recognizing and implementing FIFO behavior.
+* You may create a `Node` class if implementing the Queue using a linked structure.
+* You may create appropriate classes for the printer system and print jobs.
+
+---
+
+# 16. Learning Goal
+
+This problem is not intended to test advanced algorithms.
+
+The main question is:
+
+> **When multiple tasks arrive over time and must be processed in exactly the same order they arrived, can you recognize that a Queue is the natural data structure?**
+
+Once you recognize that pattern, you should be able to map the real-world requirements to:
+
+```text
+Arrival       → Enqueue
+Next item     → Peek / Front
+Processing    → Dequeue
+Waiting list  → Traverse the Queue
+```
+
+Your task is to design and implement the system yourself.
