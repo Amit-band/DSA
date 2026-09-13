@@ -1,0 +1,163 @@
+Problem 03 — Hospital Patient Waiting System
+
+Difficulty: Easy → Medium
+Data Structure Focus: Queue
+
+1. Problem Statement
+
+You are building a Hospital Patient Waiting System for a small clinic.
+
+The clinic has one doctor available. Patients arrive and register for treatment. The clinic follows a strict policy:
+
+Patients are treated in the exact order in which they arrive.
+
+Each patient contains:
+- Patient ID
+- Patient Name
+- Reason for Visit
+
+The system must manage the waiting patients while preserving their arrival order.
+
+2. Objective
+
+Implement a Hospital Patient Waiting System that supports:
+- ARRIVE — register a patient
+- NEXT — view the patient who will be treated next
+- TREAT — treat and remove the next patient
+- DISPLAY — display all waiting patients
+- WAITING — display the number of waiting patients
+
+The goal is to apply FIFO behavior to a real-world requirement.
+
+3. Operations
+
+ARRIVE <PatientID> <PatientName> <Reason>
+Adds a new patient to the waiting system.
+
+NEXT
+Displays the patient who will be treated next without changing the waiting system.
+
+TREAT
+Treats the next patient and removes that patient from the waiting system.
+
+DISPLAY
+Displays all waiting patients in treatment order.
+
+WAITING
+Displays the number of patients currently waiting.
+
+4. Empty System Behavior
+
+NEXT, TREAT, and DISPLAY when there are no patients must display:
+No patients waiting.
+
+WAITING when there are no patients must display:
+Patients Waiting: 0
+
+5. Requirements
+
+- Preserve patient arrival order.
+- A new patient must wait behind all existing patients.
+- NEXT must not remove a patient.
+- TREAT must remove exactly one patient.
+- DISPLAY must not modify the waiting system.
+- Correctly handle zero, one, and multiple patients.
+- The waiting count must always reflect the actual number of patients.
+
+6. Sample Input
+
+ARRIVE P101 Amit Fever
+ARRIVE P102 Rahul Headache
+ARRIVE P103 Priya Injury
+NEXT
+TREAT
+NEXT
+ARRIVE P104 John Checkup
+DISPLAY
+WAITING
+TREAT
+TREAT
+DISPLAY
+WAITING
+TREAT
+TREAT
+
+7. Sample Output
+
+Next Patient:
+Patient No: P101
+Patient Name: Amit
+Reason: Fever
+
+Treating:
+Patient No: P101
+Patient Name: Amit
+Reason: Fever
+
+Next Patient:
+Patient No: P102
+Patient Name: Rahul
+Reason: Headache
+
+Waiting Patients:
+Patient No: P102
+Patient Name: Rahul
+Reason: Headache
+Patient No: P103
+Patient Name: Priya
+Reason: Injury
+Patient No: P104
+Patient Name: John
+Reason: Checkup
+
+Patients Waiting: 3
+
+Treating:
+Patient No: P102
+Patient Name: Rahul
+Reason: Headache
+
+Treating:
+Patient No: P103
+Patient Name: Priya
+Reason: Injury
+
+Waiting Patients:
+Patient No: P104
+Patient Name: John
+Reason: Checkup
+
+Patients Waiting: 1
+
+Treating:
+Patient No: P104
+Patient Name: John
+Reason: Checkup
+
+No patients waiting.
+
+8. Edge Cases
+
+Test at minimum:
+- NEXT on an empty system
+- TREAT on an empty system
+- DISPLAY on an empty system
+- WAITING on an empty system
+- NEXT with exactly one patient
+- TREAT when exactly one patient remains
+- Adding patients after previous patients have been treated
+- Multiple NEXT calls without TREAT
+- Multiple DISPLAY calls without changing the queue
+- Treating all patients and then performing another TREAT
+
+9. Complexity Targets
+
+ARRIVE: O(1)
+NEXT: O(1)
+TREAT: O(1)
+DISPLAY: O(n)
+WAITING: O(1)
+
+10. Learning Goal
+
+Recognize that a system where requests arrive over time and must be handled in arrival order naturally follows FIFO behavior.

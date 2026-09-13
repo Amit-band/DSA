@@ -24,7 +24,9 @@ public class CustomerServieTicketSystem {
 		}
 		// checking if the there is only 1 ticket
 		if(front==rear) {
-			System.out.println("No next tickets, 1 Ticket left");
+			System.out.println("Next Ticket:");
+			System.out.println("Customer: "+front.customer);
+			System.out.println("Issue: "+front.issue);
 			System.out.println();
 			return;
 		}
@@ -70,10 +72,11 @@ public class CustomerServieTicketSystem {
 		System.out.println("Next Tickets: ");
 		Node temp = front;
 		while(temp!=null) {
-			System.out.println("Customer: "+front.customer);
-			System.out.println("Issue: "+front.issue);
+			System.out.println("Customer: "+temp.customer);
+			System.out.println("Issue: "+temp.issue);
 			temp = temp.next;
 		}
+		System.out.println();
 	}
 	
 	

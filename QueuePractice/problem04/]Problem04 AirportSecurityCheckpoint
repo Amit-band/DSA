@@ -1,0 +1,311 @@
+Problem 04 — Airport Security Checkpoint Queue
+
+Difficulty: Hard
+Data Structure Focus: Queue
+
+1. Problem Statement
+
+You are building a passenger management system for an airport security checkpoint.
+
+There is one security checkpoint. Passengers normally enter the security line in the order they arrive.
+
+However, the airport has introduced a special operational rule:
+
+A passenger may be called to the security checkpoint only when the checkpoint is ready. When the checkpoint is ready, the passenger at the front of the waiting line is processed.
+
+The system receives a sequence of events over time. Your task is to maintain the waiting line and correctly report the passenger affected by each event.
+
+Each passenger contains:
+- Passenger ID
+- Passenger Name
+- Destination
+
+2. System Operations
+
+ARRIVE <PassengerID> <PassengerName> <Destination>
+A passenger joins the end of the security waiting line.
+
+NEXT
+Display the passenger currently at the front of the waiting line without removing them.
+
+PROCESS
+Process the passenger currently at the front and remove that passenger from the waiting line.
+
+COUNT
+Display the number of passengers currently waiting.
+
+DISPLAY
+Display all passengers currently waiting from first to last.
+
+3. Additional Requirement — Processing Capacity
+
+The security checkpoint can process a fixed number of passengers during one operating cycle.
+
+The system is given a capacity value when it starts.
+
+For example, if capacity is 3, the checkpoint can process at most three passengers during one cycle.
+
+A PROCESS command still processes only one passenger.
+
+A separate command is provided:
+
+CYCLE
+Process passengers until either:
+- the waiting line becomes empty, or
+- the checkpoint reaches its capacity for the current cycle.
+
+After a cycle finishes, the number of passengers processed during that cycle must be reset for the next CYCLE command.
+
+4. Important Rules
+
+- Passengers always enter at the end of the waiting line.
+- The passenger at the front always gets priority.
+- NEXT does not remove anyone.
+- PROCESS removes exactly one passenger.
+- CYCLE may process multiple passengers, but never more than the configured capacity.
+- CYCLE must stop immediately when the queue becomes empty.
+- A passenger who arrives while passengers are already waiting joins behind them.
+- The order of passengers must never be rearranged.
+- COUNT must always report the current number of waiting passengers.
+- DISPLAY must not modify the waiting line.
+
+5. Input Format
+
+The first input value is an integer:
+
+capacity
+
+The remaining input consists of commands:
+
+ARRIVE <PassengerID> <PassengerName> <Destination>
+NEXT
+PROCESS
+CYCLE
+COUNT
+DISPLAY
+
+Passenger names and destinations are single tokens for this problem.
+
+6. Output Format
+
+NEXT:
+
+Next Passenger:
+Passenger ID: <ID>
+Passenger Name: <Name>
+Destination: <Destination>
+
+PROCESS:
+
+Processed:
+Passenger ID: <ID>
+Passenger Name: <Name>
+Destination: <Destination>
+
+CYCLE:
+
+For every passenger processed during the cycle, print:
+
+Processed:
+Passenger ID: <ID>
+Passenger Name: <Name>
+Destination: <Destination>
+
+If no passengers are waiting when PROCESS, NEXT, or CYCLE is requested:
+
+No passengers waiting.
+
+COUNT:
+
+Passengers Waiting: <count>
+
+DISPLAY:
+
+Waiting Passengers:
+Passenger ID: <ID>
+Passenger Name: <Name>
+Destination: <Destination>
+
+If the waiting line is empty:
+
+No passengers waiting.
+
+7. Sample Input
+
+3
+ARRIVE P101 Amit Dubai
+ARRIVE P102 Rahul Delhi
+ARRIVE P103 Priya Mumbai
+NEXT
+CYCLE
+COUNT
+ARRIVE P104 John Chennai
+ARRIVE P105 Sara Kochi
+DISPLAY
+CYCLE
+COUNT
+PROCESS
+NEXT
+ARRIVE P106 Arjun Goa
+DISPLAY
+CYCLE
+COUNT
+
+8. Sample Output
+
+Next Passenger:
+Passenger ID: P101
+Passenger Name: Amit
+Destination: Dubai
+
+Processed:
+Passenger ID: P101
+Passenger Name: Amit
+Destination: Dubai
+
+Processed:
+Passenger ID: P102
+Passenger Name: Rahul
+Destination: Delhi
+
+Processed:
+Passenger ID: P103
+Passenger Name: Priya
+Destination: Mumbai
+
+Passengers Waiting: 0
+
+Waiting Passengers:
+Passenger ID: P104
+Passenger Name: John
+Destination: Chennai
+Passenger ID: P105
+Passenger Name: Sara
+Destination: Kochi
+
+Processed:
+Passenger ID: P104
+Passenger Name: John
+Destination: Chennai
+
+Processed:
+Passenger ID: P105
+Passenger Name: Sara
+Destination: Kochi
+
+Passengers Waiting: 0
+
+No passengers waiting.
+
+No passengers waiting.
+
+Waiting Passengers:
+Passenger ID: P106
+Passenger Name: Arjun
+Destination: Goa
+
+Processed:
+Passenger ID: P106
+Passenger Name: Arjun
+Destination: Goa
+
+Passengers Waiting: 0
+
+9. Edge Cases
+
+Your solution must correctly handle:
+
+- ARRIVE when the queue is empty.
+- NEXT when the queue is empty.
+- PROCESS when the queue is empty.
+- CYCLE when the queue is empty.
+- DISPLAY when the queue is empty.
+- COUNT when the queue is empty.
+- A queue containing exactly one passenger.
+- CYCLE with fewer passengers than the configured capacity.
+- CYCLE with exactly the configured capacity.
+- CYCLE with more passengers than the configured capacity.
+- Multiple CYCLE commands.
+- PROCESS followed by NEXT.
+- New arrivals after previous passengers have been processed.
+- New arrivals after a cycle has reached capacity.
+- Processing the final passenger in the queue.
+- Multiple NEXT commands without modifying the queue.
+- Multiple DISPLAY commands without modifying the queue.
+
+10. Important Scenarios to Test
+
+Scenario A — Capacity Not Reached
+
+Capacity = 4
+
+Waiting passengers:
+A → B
+
+CYCLE
+
+Both A and B must be processed, and the cycle ends because the queue is empty.
+
+Scenario B — Capacity Reached
+
+Capacity = 2
+
+Waiting passengers:
+A → B → C → D
+
+CYCLE
+
+Only A and B are processed.
+
+The remaining queue must be:
+
+C → D
+
+Scenario C — New Arrival After Capacity Is Reached
+
+Capacity = 2
+
+Waiting:
+A → B → C
+
+CYCLE
+
+After the cycle:
+C remains.
+
+Then D arrives.
+
+The waiting order must be:
+
+C → D
+
+11. Constraints
+
+- 1 <= capacity <= 100000
+- 1 <= number of commands <= 100000
+- Passenger IDs are unique.
+- Each ARRIVE command creates exactly one passenger.
+- The system must preserve FIFO order.
+- Do not sort passengers.
+- Do not search for the next passenger.
+
+12. Complexity Targets
+
+ARRIVE: O(1)
+NEXT: O(1)
+PROCESS: O(1)
+COUNT: O(1)
+DISPLAY: O(n)
+CYCLE: O(min(n, capacity))
+
+13. Learning Goal
+
+This problem tests whether you can recognize a Queue when the requirement is presented as an operational workflow rather than simply saying "process in arrival order."
+
+The core requirement remains FIFO:
+
+Passengers arrive → wait → front passenger is processed → next passenger becomes eligible.
+
+The challenge is to maintain that FIFO behavior correctly while also handling repeated processing cycles, a capacity limit, new arrivals, empty states, and an efficient waiting count.
+
+Do not introduce another data structure merely to make the system appear more realistic. The primary structure and reasoning should remain centered on the Queue.
